@@ -1,0 +1,166 @@
+/* Tamanna Akter Tithi — personal site
+   Colours: change the six values under :root to restyle every page. */
+
+:root {
+  --paper: #F8FAFB;
+  --ink: #17262E;
+  --muted: #586973;
+  --accent: #0A6A94;   /* links, current page */
+  --deep: #1D4E96;     /* second blue, used in the top band */
+  --rule: #D8E0E5;
+  --mark: #FFF1B8;     /* highlight for "fill this in" notes */
+  --mark-ink: #4A3B00;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #10191E;
+    --ink: #E6EDF0;
+    --muted: #9DADB6;
+    --accent: #5CC0E8;
+    --deep: #7FA6E6;
+    --rule: #27353D;
+    --mark: #57480A;
+    --mark-ink: #FFF1B8;
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 1.125rem;
+  line-height: 1.68;
+  /* two-tone band at the top of every page */
+  border-top: 5px solid var(--accent);
+  box-shadow: inset 0 3px 0 var(--deep);
+}
+
+.wrap {
+  max-width: 47rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* ---------- Header ---------- */
+
+.site-header { padding: 3rem 0 0; }
+
+.site-name {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.site-name a { color: var(--ink); text-decoration: none; }
+
+.site-role { margin: 0.4rem 0 0; color: var(--muted); }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.5rem 0 0.6rem;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.site-nav a:hover { border-bottom-color: var(--rule); }
+.site-nav a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ---------- Main ---------- */
+
+main { padding: 3rem 0 4rem; }
+
+h1 {
+  margin: 0 0 1.25rem;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+h2 {
+  margin: 3rem 0 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+p { margin: 0 0 1.15rem; }
+
+/* Home: photo beside the introduction */
+.intro {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+.intro img {
+  width: 11rem;
+  height: 11rem;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Research entries */
+.paper { margin: 0 0 2.5rem; }
+.paper-title { margin: 0 0 0.3rem; font-size: 1.2rem; font-weight: 600; line-height: 1.4; }
+.paper-meta { margin: 0 0 0.7rem; color: var(--muted); font-size: 1rem; }
+.paper p:last-child { margin-bottom: 0; }
+
+/* A day drawn to scale, with the minutes saved marked */
+.day { margin: 1.5rem 0 0; }
+.day svg { display: block; width: 100%; height: auto; }
+.day .day-track { fill: var(--rule); }
+.day .day-saved { fill: var(--accent); }
+.day .day-tick { stroke: var(--paper); stroke-width: 1; }
+.day figcaption { margin-top: 0.6rem; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+/* Contact list */
+.contact { margin: 0; padding: 0; }
+.contact div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--rule); }
+.contact dt { color: var(--muted); }
+.contact dd { margin: 0; overflow-wrap: anywhere; }
+
+/* Notes to yourself: anything in yellow still needs your real details */
+.todo { background: var(--mark); color: var(--mark-ink); padding: 0.05em 0.3em; border-radius: 3px; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 1.5rem 0 3rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.site-footer p { margin: 0; }
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 36rem) {
+  body { font-size: 1.0625rem; }
+  .site-header { padding-top: 2rem; }
+  .site-name { font-size: 1.65rem; }
+  h1 { font-size: 1.85rem; }
+  main { padding: 2rem 0 3rem; }
+  .intro { grid-template-columns: 1fr; gap: 1.5rem; }
+  .intro img { width: 9rem; height: 9rem; }
+  .contact div { grid-template-columns: 1fr; gap: 0.1rem; }
+}
